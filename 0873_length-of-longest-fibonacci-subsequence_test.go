@@ -32,11 +32,88 @@ import (
 // [1,11,12]，[3,11,14] 以及 [7,11,18] 。
 
 func TestL873(t *testing.T) {
-	if lenLongestFibSubseq([]int{3, 5, 9}) != 3 {
+	if lenLongestFibSubseq([]int{1, 2, 3, 4, 5, 6, 7, 8}) != 5 {
+		t.Fail()
+	}
+	if lenLongestFibSubseq([]int{1, 3, 7, 11, 12, 14, 18}) != 3 {
+		t.Fail()
+	}
+	// 2 7 9
+	// 2 8 10 18
+	// 2 8 10 18
+	// 4 10 14
+	// 4 14 18 32 50
+	//
+	if lenLongestFibSubseq([]int{2, 4, 7, 8, 9, 10, 14, 15, 18, 23, 32, 50}) != 5 {
 		t.Fail()
 	}
 }
 
+// 解题思路
+// 1. 暴力, x[i]+x[j]=x[j+1]
+// 执行用时: 692 ms, 在Length of Longest Fibonacci Subsequence的Go提交中击败了25.00% 的用户
+// emm 很慢
 func lenLongestFibSubseq(A []int) int {
-	return 0
+	l := len(A)
+	max := 0
+
+	for i := 0; i < l; i++ {
+		a := A[i]
+		for j := i + 1; j < l-1; j++ {
+			oneMax := 2
+			b := A[j]
+
+			want := a + b
+			for k := j + 1; k < l; k++ {
+				c := A[k]
+
+				if want == c {
+					want = c + b
+					b = c
+					oneMax++
+					if oneMax > max {
+						max = oneMax
+					}
+				} else if want < c {
+					break
+				}
+			}
+
+		}
+	}
+
+	return max
+}
+
+// todo 动态规划
+func lenLongestFibSubseq2(A []int) int {
+	l := len(A)
+	max := 0
+
+	for i := 0; i < l; i++ {
+		a := A[i]
+		for j := i + 1; j < l-1; j++ {
+			oneMax := 2
+			b := A[j]
+
+			want := a + b
+			for k := j + 1; k < l; k++ {
+				c := A[k]
+
+				if want == c {
+					want = c + b
+					b = c
+					oneMax++
+					if oneMax > max {
+						max = oneMax
+					}
+				} else if want < c {
+					break
+				}
+			}
+
+		}
+	}
+
+	return max
 }
