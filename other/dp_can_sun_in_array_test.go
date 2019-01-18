@@ -63,7 +63,7 @@ func canSunInArray(a []int, s int) (t bool) {
 			}
 
 			if i > 0 {
-				// 注意这个分支判断
+				// 注意这个分支判断, 很容易被忽略
 				// 如果a[i]值大于了j, 则说明a[i]一定不可选, 只能走不选分支
 				if j < a[i] {
 					opt[i][j] = opt[i-1][j]
