@@ -41,7 +41,6 @@ func TestCanSunInArray(t *testing.T) {
 // 还需要考虑出口:
 // 1. s==0 return true
 // 2. i<=0 return false
-// 3, 34, 4, 12, 5, 2
 func canSunInArray(a []int, s int) (t bool) {
 	// 先初始化一个二维数组, 保存解
 	opt := make([][]bool, len(a))
