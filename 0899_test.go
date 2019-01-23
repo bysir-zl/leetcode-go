@@ -1,8 +1,8 @@
 package test
 
 import (
-	"testing"
 	"sort"
+	"testing"
 )
 
 // 有序队列
