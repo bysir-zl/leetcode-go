@@ -7,6 +7,7 @@ import (
 // en name
 // zh name
 // 难度 简单
+// inspiration
 //
 // desc
 

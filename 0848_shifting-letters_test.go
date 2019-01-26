@@ -4,7 +4,9 @@ import (
 	"testing"
 )
 
+// shifting-letters
 // 字母移位
+// 难度 中等
 //
 // 有一个由小写字母组成的字符串 S，和一个整数数组 shifts。
 //
@@ -22,6 +24,7 @@ func TestL848(t *testing.T) {
 	}
 }
 
+// 先把shifts算好, 再一次性偏移S
 func shiftingLetters(S string, shifts []int) string {
 	bs := []byte(S)
 

@@ -4,7 +4,10 @@ import (
 	"testing"
 )
 
+// binary-tree-inorder-traversal
 // 二叉树的中序遍历
+// 难度 中等
+// 递归
 //
 // 给定一个二叉树，返回它的中序 遍历。
 
@@ -30,6 +33,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// 递归解法
 func inorderTraversal(root *TreeNode) []int {
 	var a []int
 	if root == nil {
