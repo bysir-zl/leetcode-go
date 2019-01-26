@@ -1,2 +1,2 @@
 # leetcode-go
-answer of leetcode with golang
+blast leetcode with golang
