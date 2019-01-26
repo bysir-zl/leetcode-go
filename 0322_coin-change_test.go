@@ -31,11 +31,9 @@ func TestL322(t *testing.T) {
 
 // 动态规划
 // 对于每一个硬币都有选和不选两个状态
-// 对于每一次amount从小到大的遍历,
-// opt(amount) = min(opt(1 + amount[j]))
-// 由于硬币是无限的, 所以
+// 由于硬币是无限的, 选或者不选不会有改变, 所以硬币是常量, 解的只由一个变量控制: amount
 // 不选i: opt(amount) = opt(amount)
-// 选i: opt(amount) = 1 + opt(amount-coins[:i])
+// 选i: opt(amount) = min(1 + opt(amount-coins[i]), i=0~len(coins))
 func coinChange(coins []int, amount int) int {
 	// 拼出amount至少需要多少块金币
 	opt := make([]int, amount+1)
@@ -46,7 +44,7 @@ func coinChange(coins []int, amount int) int {
 		opt[i] = amount + 1
 	}
 	for i := 0; i <= amount; i++ {
-		// 对于每一个元素 都有选择或者不选, 所以有两个*len(coins)个分支
+		// 对于每一个元素 都有选择或者不选, 所以有2*len(coins)个分支
 		for j := 0; j < len(coins); j++ {
 			// 所需的金额小于金币大小, 则只能不选
 			if i < coins[j] {
