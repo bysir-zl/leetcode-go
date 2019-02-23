@@ -33,6 +33,9 @@ func TestL169(t *testing.T) {
 	if majorityElement([]int{2, 2, 1, 1, 1, 2, 2}) != 2 {
 		t.Fail()
 	}
+	if majorityElement([]int{6, 6, 6, 7, 7}) != 6 {
+		t.Fail()
+	}
 }
 
 // 多数投票法, 有点巧妙, 有点意思, 这种解法如果理解不了那就记住就好
@@ -46,6 +49,8 @@ func majorityElement(nums []int) int {
 			count = 1
 		} else if major != v {
 			count--
+		} else {
+			count++
 		}
 	}
 	return major
